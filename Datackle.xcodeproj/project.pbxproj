@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1A9C0B628537AA90037FA1C /* EstadisticasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9C0B528537AA80037FA1C /* EstadisticasViewController.swift */; };
 		A1C3FB0B28412ACF004AD9AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3FB0A28412ACF004AD9AC /* AppDelegate.swift */; };
 		A1C3FB0D28412ACF004AD9AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3FB0C28412ACF004AD9AC /* SceneDelegate.swift */; };
 		A1C3FB0F28412ACF004AD9AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3FB0E28412ACF004AD9AC /* ViewController.swift */; };
 		A1C3FB1228412ACF004AD9AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1C3FB1028412ACF004AD9AC /* Main.storyboard */; };
 		A1C3FB1428412AD2004AD9AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1C3FB1328412AD2004AD9AC /* Assets.xcassets */; };
 		A1C3FB1728412AD2004AD9AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1C3FB1528412AD2004AD9AC /* LaunchScreen.storyboard */; };
+		DBE3F1A1CFC7A9A98AAAE61A /* Pods_Datackle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3984827C742D495D6022BAC1 /* Pods_Datackle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1A9C0B528537AA80037FA1C /* EstadisticasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadisticasViewController.swift; sourceTree = "<group>"; };
+		3789F7022693EDEDE88B015C /* Pods-Datackle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Datackle.debug.xcconfig"; path = "Target Support Files/Pods-Datackle/Pods-Datackle.debug.xcconfig"; sourceTree = "<group>"; };
+		3984827C742D495D6022BAC1 /* Pods_Datackle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Datackle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3FB0728412ACF004AD9AC /* Datackle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Datackle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3FB0A28412ACF004AD9AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3FB0C28412ACF004AD9AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +28,7 @@
 		A1C3FB1628412AD2004AD9AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1C3FB1828412AD2004AD9AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1C3FB2028412B03004AD9AC /* Datackle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Datackle.entitlements; sourceTree = "<group>"; };
+		B521F0DE5B70BCC8967427D9 /* Pods-Datackle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Datackle.release.xcconfig"; path = "Target Support Files/Pods-Datackle/Pods-Datackle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,17 +36,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE3F1A1CFC7A9A98AAAE61A /* Pods_Datackle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CF2154F20FD1EC2C6E2A609 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3789F7022693EDEDE88B015C /* Pods-Datackle.debug.xcconfig */,
+				B521F0DE5B70BCC8967427D9 /* Pods-Datackle.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A1C3FAFE28412ACE004AD9AC = {
 			isa = PBXGroup;
 			children = (
 				A1C3FB0928412ACF004AD9AC /* Datackle */,
 				A1C3FB0828412ACF004AD9AC /* Products */,
+				2CF2154F20FD1EC2C6E2A609 /* Pods */,
+				FE35059EFF5D0DAFC009F80A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,9 +97,16 @@
 			isa = PBXGroup;
 			children = (
 				A1C3FB0E28412ACF004AD9AC /* ViewController.swift */,
-				A1A9C0B528537AA80037FA1C /* EstadisticasViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FE35059EFF5D0DAFC009F80A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3984827C742D495D6022BAC1 /* Pods_Datackle.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1C3FB1B28412AD2004AD9AC /* Build configuration list for PBXNativeTarget "Datackle" */;
 			buildPhases = (
+				3BA73A662F886FB2740D57BB /* [CP] Check Pods Manifest.lock */,
 				A1C3FB0328412ACF004AD9AC /* Sources */,
 				A1C3FB0428412ACF004AD9AC /* Frameworks */,
 				A1C3FB0528412ACF004AD9AC /* Resources */,
+				D73550DE339DDACA70BE3328 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +177,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3BA73A662F886FB2740D57BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Datackle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D73550DE339DDACA70BE3328 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Datackle/Pods-Datackle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Datackle/Pods-Datackle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Datackle/Pods-Datackle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A1C3FB0328412ACF004AD9AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -161,7 +226,6 @@
 			files = (
 				A1C3FB0F28412ACF004AD9AC /* ViewController.swift in Sources */,
 				A1C3FB0B28412ACF004AD9AC /* AppDelegate.swift in Sources */,
-				A1A9C0B628537AA90037FA1C /* EstadisticasViewController.swift in Sources */,
 				A1C3FB0D28412ACF004AD9AC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +368,7 @@
 		};
 		A1C3FB1C28412AD2004AD9AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3789F7022693EDEDE88B015C /* Pods-Datackle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -329,12 +394,13 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		A1C3FB1D28412AD2004AD9AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B521F0DE5B70BCC8967427D9 /* Pods-Datackle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -360,7 +426,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

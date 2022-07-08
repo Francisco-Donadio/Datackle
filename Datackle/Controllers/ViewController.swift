@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Popover
 
 class ViewController: UIViewController {
 
@@ -102,53 +103,62 @@ class ViewController: UIViewController {
     var scoreV = 0
     
     @IBAction func tryLocal(_ sender: UIButton) {
-       
         scoreL += 5
+        triesL += 1
         scoreLocal.text = "\(scoreL)"
     }
     
     @IBAction func tryVisitante(_ sender: UIButton) {
         scoreV += 5
+        triesV += 1
         scoreVisitante.text = "\(scoreV)"
     }
     
     @IBAction func conversionL(_ sender: UIButton) {
         scoreL += 2
+        conversionesL += 1
         scoreLocal.text = "\(scoreL)"
     }
     
     @IBAction func conversionV(_ sender: UIButton) {
         scoreV += 2
+        conversionesV += 1
         scoreVisitante.text = "\(scoreV)"
     }
     
     @IBAction func tryPenalL(_ sender: UIButton) {
         scoreL += 7
+        triesL += 1
         scoreLocal.text = "\(scoreL)"
     }
     
     @IBAction func tryPenalV(_ sender: UIButton) {
         scoreV += 7
+        triesV += 1
         scoreVisitante.text = "\(scoreV)"
     }
     
     @IBAction func penalL(_ sender: UIButton) {
         scoreL += 3
+        penalesL += 1
         scoreLocal.text = "\(scoreL)"
     }
     
     @IBAction func penalV(_ sender: UIButton) {
         scoreV += 3
+        penalesV += 1
         scoreVisitante.text = "\(scoreV)"
     }
     
     @IBAction func dropL(_ sender: UIButton) {
         scoreL += 3
+        dropsL += 1
         scoreLocal.text = "\(scoreL)"
     }
     
     @IBAction func dropV(_ sender: UIButton) {
         scoreV += 3
+        dropsV += 1
         scoreVisitante.text = "\(scoreV)"
     }
     
@@ -161,7 +171,7 @@ class ViewController: UIViewController {
     var totalTime = 600
     
     @IBAction func tarjetaAmarillaL(_ sender: UIButton) {
-        
+        amarillasL += 1
         tiempoTarjetaLocal.invalidate()
         tiempoTarjetaL.progress = 0.0
         secondsPassedL = 0
@@ -179,9 +189,9 @@ class ViewController: UIViewController {
         }
     }
     
-    
     @IBOutlet weak var tiempoTarjetaV: UIProgressView!
     @IBAction func tarjetaAmarillaV(_ sender: UIButton) {
+        amarillasV += 1
         tiempoTarjetaVisit.invalidate()
         tiempoTarjetaV.progress = 0.0
         secondsPassedV = 0
@@ -199,8 +209,6 @@ class ViewController: UIViewController {
             tiempoTarjetaV.progress = 0.0
         }
     }
-    
-
     
     
     //MARK: - Timer
@@ -258,10 +266,6 @@ class ViewController: UIViewController {
         return timeString
     }
     
-    
-    
-    
-    
     @IBAction func resetTapped(_ sender: UIButton) {
         let alert = UIAlertController(title: "Reiniciar Timer", message: "Esta seguro?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: { (_) in
@@ -279,7 +283,72 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    //MARK: - Estadisticas
     
+    var triesL = 0
+    var triesV = 0
+    var conversionesL = 0
+    var conversionesV = 0
+    var penalesL = 0
+    var penalesV = 0
+    var dropsL = 0
+    var dropsV = 0
+    var amarillasL = 0
+    var amarillasV = 0
+    
+    @IBAction func estadisticasPressed(_ sender: UIButton) {
+        
+        let originPoint = CGPoint(x: sender.frame.midX, y: sender.frame.maxY)
+        let popoverView = UIView(frame: CGRect.init(x: 32, y: sender.bounds.maxY + 20, width: self.view.bounds.width - 764, height: 350))
+        
+        let header = UILabel(frame: CGRect(x: 0, y: 25, width: popoverView.bounds.width, height: 40))
+        header.text = "Local                                         Visitante"
+        header.textAlignment = .center
+        popoverView.addSubview(header)
+        
+        let tries = UILabel(frame: CGRect(x: 0, y: 80, width: popoverView.bounds.width, height: 40))
+        tries.text = "\(triesL)             Tries             \(triesV)"
+        tries.textAlignment = .center
+        popoverView.addSubview(tries)
+        
+        let conversiones = UILabel(frame: CGRect(x: 0, y: 110, width: popoverView.bounds.width, height: 40))
+        conversiones.text = "\(conversionesL)     Conversiones     \(conversionesV) "
+        conversiones.textAlignment = .center
+        popoverView.addSubview(conversiones)
+        
+        let penales = UILabel(frame: CGRect(x: 0, y: 140, width: popoverView.bounds.width, height: 40))
+        penales.text = "\(penalesL)           Penales          \(penalesV)"
+        penales.textAlignment = .center
+        popoverView.addSubview(penales)
+        
+        let drops = UILabel(frame: CGRect(x: 0, y: 170, width: popoverView.bounds.width, height: 40))
+        drops.text = "\(dropsL)            Drops            \(dropsV)"
+        drops.textAlignment = .center
+        popoverView.addSubview(drops)
+        
+        let amarillas = UILabel(frame: CGRect(x: 0, y: 200, width: popoverView.bounds.width, height: 40))
+        amarillas.text = "\(amarillasL)          Amarillas         \(amarillasV)"
+        amarillas.textAlignment = .center
+        popoverView.addSubview(amarillas)
+        
+        let lines = UILabel(frame: CGRect(x: 0, y: 230, width: popoverView.bounds.width, height: 40))
+        lines.text = "\(numLineAtaqueL)/\(numLineAtaqueV)          Lines          \(numLinesDefensaV)/\(numLinesDefensaL)"
+        lines.textAlignment = .center
+        popoverView.addSubview(lines)
+        
+        let scrums = UILabel(frame: CGRect(x: 0, y: 260, width: popoverView.bounds.width, height: 40))
+        scrums.text = "\(numScrumAtaqueL)/\(numScrumAtaqueV)         Scrums         \(numScrumDefensaV)/\(numScrumDefensaL)"
+        scrums.textAlignment = .center
+        popoverView.addSubview(scrums)
+        
+        let tackles = UILabel(frame: CGRect(x: 0, y: 290, width: popoverView.bounds.width, height: 40))
+        tackles.text = "\(numTacklesL)          Tackles         \(numTacklesV)"
+        tackles.textAlignment = .center
+        popoverView.addSubview(tackles)
+        
+        let popover = Popover()
+        popover.show(popoverView, point: originPoint)
+    }
     
     
     
