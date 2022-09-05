@@ -12,27 +12,30 @@ class ViewController: UIViewController {
 
   //MARK: - Ataque
     
-    @IBOutlet weak var lineAtaqueL: UILabel!
-    @IBOutlet weak var lineAtaqueV: UILabel!
+    @IBOutlet weak var lineAtaqueCalidad: UILabel!
+    @IBOutlet weak var lineAtaqueObtenido: UILabel!
+    @IBOutlet weak var lineAtaquePerdido: UILabel!
     
-    var numLineAtaqueL = 0
-    var numLineAtaqueV = 0
-    
-    @IBAction func stepperLineAtaqueL(_ sender: UIStepper) {
-        lineAtaqueL.text = String(format: "%.f", sender.value)
-        numLineAtaqueL = Int(sender.value)
+    @IBAction func stepperLineAtaqueCalidad(_ sender: UIStepper) {
+        lineAtaqueCalidad.text = String(format: "%.f", sender.value)
+        lineAtaqueObtenido.text = String(format: "%.f", sender.value)
+        numLineAtaqueCalidad = Int(sender.value)
+        numLineAtaqueObtenido = Int(sender.value)
         }
     
-    @IBAction func stepperLineAtaqueV(_ sender: UIStepper) {
-        lineAtaqueV.text = String(format: "%.f", sender.value)
-        numLineAtaqueV = Int(sender.value)
+    @IBAction func stepperLineAtaqueObtenido(_ sender: UIStepper) {
+        lineAtaqueObtenido.text = String(format: "%.f", sender.value)
+        numLineAtaqueObtenido = Int(sender.value)
     }
+    
+    @IBAction func stepperLineAtaquePerdido(_ sender: UIStepper) {
+        lineAtaquePerdido.text = String(format: "%.f", sender.value)
+        numLineAtaquePerdido = Int(sender.value)
+    }
+    
     
     @IBOutlet weak var scrumAtaqueL: UILabel!
     @IBOutlet weak var scrumAtaqueV: UILabel!
-    
-    var numScrumAtaqueL = 0
-    var numScrumAtaqueV = 0
     
     @IBAction func stepperScrumAtaqueL(_ sender: UIStepper) {
         scrumAtaqueL.text = String(format: "%.f", sender.value)
@@ -44,13 +47,24 @@ class ViewController: UIViewController {
         numScrumAtaqueV = Int(sender.value)
     }
     
+    @IBOutlet weak var pasesAtaque: UILabel!
+    @IBOutlet weak var pasesVisitante: UILabel!
+    
+    @IBAction func stepperPasesAtaque(_ sender: UIStepper) {
+        pasesAtaque.text = String(format: "%.f", sender.value)
+        numPasesAtaque = Int(sender.value)
+    }
+    
+    @IBAction func stepperPasesVisitante(_ sender: UIStepper) {
+        pasesVisitante.text = String(format: "%.f", sender.value)
+        numPasesVisitante = Int(sender.value)
+    }
+    
+    
     //MARK: - Defensa
     
     @IBOutlet weak var lineDefensaL: UILabel!
     @IBOutlet weak var lineDefensaV: UILabel!
-    
-    var numLinesDefensaL = 0
-    var numLinesDefensaV = 0
     
     @IBAction func stepperLineDefensaL(_ sender: UIStepper) {
         lineDefensaL.text = String(format: "%.f", sender.value)
@@ -65,9 +79,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var scrumDefensaL: UILabel!
     @IBOutlet weak var scrumDefensaV: UILabel!
     
-    var numScrumDefensaL = 0
-    var numScrumDefensaV = 0
-    
     @IBAction func stepperScrumDefensaL(_ sender: UIStepper) {
         scrumDefensaL.text = String(format: "%.f", sender.value)
         numScrumDefensaL = Int(sender.value)
@@ -80,9 +91,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tackleL: UILabel!
     @IBOutlet weak var tackleV: UILabel!
-    
-    var numTacklesL = 0
-    var numTacklesV = 0
     
     @IBAction func stepperTackleL(_ sender: UIStepper) {
         tackleL.text = String(format: "%.f", sender.value)
@@ -177,6 +185,7 @@ class ViewController: UIViewController {
         secondsPassedL = 0
         
         tiempoTarjetaLocal = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimerL), userInfo: nil, repeats: true)
+        print(tiempoTarjetaLocal)
     }
     @objc func updateTimerL() {
         if secondsPassedL < totalTime {
@@ -258,8 +267,8 @@ class ViewController: UIViewController {
     
     func makeTimeString(hours: Int,minutes: Int, seconds: Int) -> String {
         var timeString = ""
-//         timeString += String(format: "%02d", hours)
-//        timeString += " : "
+//      timeString += String(format: "%02d", hours)
+//      timeString += " : "
         timeString += String(format: "%02d", minutes)
         timeString += " : "
         timeString += String(format: "%02d", seconds)
@@ -287,6 +296,15 @@ class ViewController: UIViewController {
     
     var triesL = 0
     var triesV = 0
+    var numLineAtaqueCalidad = 0
+    var numLineAtaqueObtenido = 0
+    var numLineAtaquePerdido = 0
+    var numLinesDefensaL = 0
+    var numLinesDefensaV = 0
+    var numScrumAtaqueL = 0
+    var numScrumAtaqueV = 0
+    var numScrumDefensaL = 0
+    var numScrumDefensaV = 0
     var conversionesL = 0
     var conversionesV = 0
     var penalesL = 0
@@ -295,6 +313,10 @@ class ViewController: UIViewController {
     var dropsV = 0
     var amarillasL = 0
     var amarillasV = 0
+    var numPasesAtaque = 0
+    var numPasesVisitante = 0
+    var numTacklesL = 0
+    var numTacklesV = 0
     
     @IBAction func estadisticasPressed(_ sender: UIButton) {
         
@@ -304,47 +326,62 @@ class ViewController: UIViewController {
         let header = UILabel(frame: CGRect(x: 0, y: 25, width: popoverView.bounds.width, height: 40))
         header.text = "Local                                         Visitante"
         header.textAlignment = .center
+        header.textColor = UIColor.systemTeal
         popoverView.addSubview(header)
         
         let tries = UILabel(frame: CGRect(x: 0, y: 80, width: popoverView.bounds.width, height: 40))
         tries.text = "\(triesL)             Tries             \(triesV)"
         tries.textAlignment = .center
+        tries.textColor = UIColor.red
         popoverView.addSubview(tries)
         
         let conversiones = UILabel(frame: CGRect(x: 0, y: 110, width: popoverView.bounds.width, height: 40))
         conversiones.text = "\(conversionesL)     Conversiones     \(conversionesV) "
         conversiones.textAlignment = .center
+        conversiones.textColor = UIColor.red
         popoverView.addSubview(conversiones)
         
         let penales = UILabel(frame: CGRect(x: 0, y: 140, width: popoverView.bounds.width, height: 40))
         penales.text = "\(penalesL)           Penales          \(penalesV)"
         penales.textAlignment = .center
+        penales.textColor = UIColor.red
         popoverView.addSubview(penales)
         
         let drops = UILabel(frame: CGRect(x: 0, y: 170, width: popoverView.bounds.width, height: 40))
         drops.text = "\(dropsL)            Drops            \(dropsV)"
         drops.textAlignment = .center
+        drops.textColor = UIColor.red
         popoverView.addSubview(drops)
         
         let amarillas = UILabel(frame: CGRect(x: 0, y: 200, width: popoverView.bounds.width, height: 40))
         amarillas.text = "\(amarillasL)          Amarillas         \(amarillasV)"
         amarillas.textAlignment = .center
+        amarillas.textColor = UIColor.red
         popoverView.addSubview(amarillas)
         
         let lines = UILabel(frame: CGRect(x: 0, y: 230, width: popoverView.bounds.width, height: 40))
-        lines.text = "\(numLineAtaqueL)/\(numLineAtaqueV)          Lines          \(numLinesDefensaV)/\(numLinesDefensaL)"
+        lines.text = "(\(numLineAtaqueCalidad))\(numLineAtaqueObtenido) / \(numLineAtaquePerdido)        Lines          \(numLinesDefensaV)/\(numLinesDefensaL)"
         lines.textAlignment = .center
+        lines.textColor = UIColor.red
         popoverView.addSubview(lines)
         
         let scrums = UILabel(frame: CGRect(x: 0, y: 260, width: popoverView.bounds.width, height: 40))
         scrums.text = "\(numScrumAtaqueL)/\(numScrumAtaqueV)         Scrums         \(numScrumDefensaV)/\(numScrumDefensaL)"
         scrums.textAlignment = .center
+        scrums.textColor = UIColor.red
         popoverView.addSubview(scrums)
         
         let tackles = UILabel(frame: CGRect(x: 0, y: 290, width: popoverView.bounds.width, height: 40))
         tackles.text = "\(numTacklesL)          Tackles         \(numTacklesV)"
         tackles.textAlignment = .center
+        tackles.textColor = UIColor.red
         popoverView.addSubview(tackles)
+        
+        let pases = UILabel(frame: CGRect(x: 0, y: 320, width: popoverView.bounds.width, height: 40))
+        pases.text = "\(numPasesAtaque)          Pases          \(numPasesVisitante)"
+        pases.textAlignment = .center
+        pases.textColor = UIColor.red
+        popoverView.addSubview(pases)
         
         let popover = Popover()
         popover.show(popoverView, point: originPoint)
